@@ -34,7 +34,7 @@ app.use('/enrollments', adminAuth, require('./routes/enrollments'));
 
 // Homepage Route (Protected)
 app.get('/', adminAuth, (req, res) => {
-    res.render('index');
+    res.render('admin');
 });
 
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

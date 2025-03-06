@@ -75,7 +75,7 @@ router.post('/admin/signup', async (req, res) => {
 // Logout Admin
 router.post('/logout', (req, res) => {
     res.clearCookie('token');  // Remove the JWT token cookie
-    res.redirect('/auth/login');  // Redirect to login page
+    res.redirect('login');  // Redirect to login page
 });
 
 
