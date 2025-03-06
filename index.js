@@ -23,10 +23,12 @@ app.use('/admin', adminRoutes);
 app.set('view engine', 'ejs');
 
 // Connect to MongoDB
-mongoose.connect('mongodb://127.0.0.1:27017/student-management', { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error(err));
-
+mongoose.connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => console.log('Connected to MongoDB Atlas'))
+.catch(err => console.error('Database connection error:', err));
 // Protected Routes
 app.use('/students', adminAuth, require('./routes/students'));
 app.use('/courses', adminAuth, require('./routes/courses'));
