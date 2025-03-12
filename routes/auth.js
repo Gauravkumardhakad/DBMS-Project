@@ -3,6 +3,7 @@ const router = express.Router();
 const Admin = require('../models/Admin');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const adminAuth = require('../middleware/auth');
 
 // Render the login page
 router.get('/login', (req, res) => {
