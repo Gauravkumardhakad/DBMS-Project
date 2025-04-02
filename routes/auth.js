@@ -38,7 +38,7 @@ router.post('/login', async (req, res) => {
 
 // Render the signup page
 router.get('/admin/signup', (req, res) => {
-    res.render('signup');  // Make sure you have a 'signup.ejs' file in the views folder
+    res.render('signup');  
 });
 
 // Handle signup form submission
