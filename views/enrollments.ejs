@@ -145,17 +145,20 @@
   <ul class="list-group mb-4">
     <% if (enrollments.length > 0) { %>
       <% enrollments.forEach(enrollment => { %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <div>
-            <strong><%= enrollment.studentId ? enrollment.studentId.name : 'Unknown Student' %></strong> –
-            <%= enrollment.courseId ? enrollment.courseId.name : 'Unknown Course' %> –
-            Grade: <%= enrollment.grade %>
-          </div>
-          <form action="/enrollments/delete/<%= enrollment._id %>" method="POST" style="display:inline;">
-            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-          </form>
-        </li>
+        <% if (enrollment.studentId && enrollment.courseId) { %>
+          <li class="list-group-item d-flex justify-content-between align-items-center">
+            <div>
+              <strong><%= enrollment.studentId.name %></strong> –
+              <%= enrollment.courseId.name %> –
+              Grade: <%= enrollment.grade %>
+            </div>
+            <form action="/enrollments/delete/<%= enrollment._id %>" method="POST" style="display:inline;">
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+          </li>
+        <% } %>
       <% }) %>
+      
     <% } else { %>
       <li class="list-group-item text-center">No enrollments found</li>
     <% } %>
