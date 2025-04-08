@@ -94,4 +94,20 @@ router.post('/delete/:id', async (req, res) => {
 });
 
 
+// View student details and their enrolled courses
+router.get('/details/:id', async (req, res) => {
+    try {
+        const student = await Student.findById(req.params.id);
+        if (!student) return res.status(404).send('Student not found');
+
+        const enrollments = await Enrollment.find({ studentId: student._id }).populate('courseId');
+        const courses = enrollments.map(enrollment => enrollment.courseId);
+
+        res.render('studentDetails', { student, courses });
+    } catch (err) {
+        res.status(500).send('Server Error');
+    }
+});
+
+
 module.exports = router;
