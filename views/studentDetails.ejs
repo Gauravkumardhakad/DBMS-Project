@@ -101,14 +101,15 @@
         <thead>
           <tr>
             <th>Course Name</th>
-            <th>Grade</th>
+            
           </tr>
         </thead>
         <tbody>
           <% courses.forEach(course => { %>
             <tr>
-              <td><%= course.name %></td>
-              <td><%= course.grade || 'N/A' %></td>
+              
+              <td><%= course.name || 'NA'%></td>
+              
             </tr>
           <% }) %>
         </tbody>

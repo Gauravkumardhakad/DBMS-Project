@@ -102,7 +102,7 @@ router.get('/details/:id', async (req, res) => {
 
         const enrollments = await Enrollment.find({ studentId: student._id }).populate('courseId');
         const courses = enrollments.map(enrollment => enrollment.courseId);
-
+        
         res.render('studentDetails', { student, courses });
     } catch (err) {
         res.status(500).send('Server Error');
